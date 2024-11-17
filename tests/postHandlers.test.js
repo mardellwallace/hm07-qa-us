@@ -1,13 +1,20 @@
-// eslint-disable-nextline no-undef
-const config = require('../config');
-
-test('should return status code 200', async () => {
-	let actualStatus;
+test('should return status code 201 for POST request', async () => {
+	const requestBody = {
+	  // Define the request body according to your API Docs
+	};
+  
 	try {
-		const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
-		actualStatus = response.status;
+	  const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(requestBody)
+	  });
+  
+	  const actualStatus = response.status;
+	  expect(actualStatus).toBe(201); // Assuming 201 is the expected status code
 	} catch (error) {
-		console.error(error);
-
+	  console.error(error);
 	}
-	expect(actualStatus).toBe(200);
+  });

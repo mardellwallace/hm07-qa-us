@@ -1,12 +1,15 @@
-// eslint-disable-next-line no-undef
-const config = require('../config');
-
-test('', async () => {
-    try {
-		const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
-			method: 'DELETE',
-		});
+test('should return status code 204 for DELETE request', async () => {
+	try {
+	  const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
+		method: 'DELETE',
+		headers: {
+		  'Content-Type': 'application/json'
+		}
+	  });
+  
+	  const actualStatus = response.status;
+	  expect(actualStatus).toBe(204); // Assuming 204 is the expected status code
 	} catch (error) {
-		console.error(error);
+	  console.error(error);
 	}
-});
+  });
