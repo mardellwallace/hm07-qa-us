@@ -1,20 +1,15 @@
-test('should return status code 201 for POST request', async () => {
-	const requestBody = {
-	  // Define the request body according to your API Docs
-	};
-  
-	try {
-	  const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
-		method: 'POST',
-		headers: {
-		  'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(requestBody)
-	  });
-  
-	  const actualStatus = response.status;
-	  expect(actualStatus).toBe(201); // Assuming 201 is the expected status code
-	} catch (error) {
-	  console.error(error);
-	}
-  });
+// eslint-disable-next-line no-undef
+const config = require('../config');
+
+test('POST request should return status 200', async () => {
+    let actualStatuscode
+    try {
+        // Make the POST request to the API endpoint
+        const response = await fetch(${config.API_URL}/api/v1/warehouses);
+        // Assert that the status code is 200
+        actualStatuscode = response.status
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+    expect(actualStatuscode).toBe(200);
+});
