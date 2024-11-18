@@ -2,7 +2,7 @@
 const config = require('../config');
 
 test('Put request code should be 200', async () => {
-  let actualGetresponsecode;
+  let actualPutresponsecode;
   try {
       const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
       actualPutresponsecode = response.status
