@@ -1,20 +1,28 @@
-test('should return status code 200 for PUT request', async () => {
-	const requestBody = {
-	  // Define the request body according to your API Docs
-	};
-  
-	try {
-	  const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
-		method: 'PUT',
-		headers: {
-		  'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(requestBody)
-	  });
-  
-	  const actualStatus = response.status;
-	  expect(actualStatus).toBe(200); // Assuming 200 is the expected status code
-	} catch (error) {
-	  console.error(error);
-	}
-  });
+// eslint-disable-next-line no-undef
+const config = require('../config');
+
+test('Put request code should be 200', async () => {
+  let actualGetresponsecode;
+  try {
+      const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
+      actualPutresponsecode = response.status
+  } catch (error) {
+      console.error(error);
+  }
+
+  expect(actualPutresponsecode).toBe(200);
+});
+
+
+test('Response body should return the first warehouse with the correct name', async () => {
+  let actualResponseBody;
+  try {
+    const response = await fetch(`${config.API_URL}/api/v1/warehouses`);
+    actualResponseBody = await response.json(); // Ensure you await the response
+  } catch (error) {
+    console.error(error);
+  }
+
+  // Assert the name of the first warehouse in the response
+  expect(actualResponseBody[0].name).toBe("Everything You Need");
+});
